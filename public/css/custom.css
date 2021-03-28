@@ -1,0 +1,33 @@
+.panel-primary .page-title{
+	height: auto !important;
+	padding-top: 0px !important;
+	color: white !important;
+}
+
+.panel-primary .page-title>i {
+    top: 0px !important;
+}
+
+/*
+.app-container{
+	background-color: #ebedef !important;	
+}
+
+.navbar-top {
+    background: #22A7F0 !important;
+    border-color: #22A7F0 !important;
+}
+*/
+
+.app-container .side-body {
+    margin-right: 0px !important;
+}
+
+.delete, .edit, .restore {
+    margin-left: 0px !important; 
+}
+
+.modal-body {
+	max-height: calc(100vh - 200px);
+	overflow-y: auto;
+}

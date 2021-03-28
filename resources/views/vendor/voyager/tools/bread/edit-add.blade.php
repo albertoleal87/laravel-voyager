@@ -358,9 +358,41 @@
                                         @else
                                             <select name="field_input_type_{{ $data['field'] }}">
                                                 @foreach (Voyager::formFields() as $formField)
-                                                    @php
-                                                    $selected = (isset($dataRow->type) && $formField->getCodename() == $dataRow->type) || (!isset($dataRow->type) && $formField->getCodename() == 'text');
+                                                    @php                                                    
+                                                    
+                                                    if(isset($dataRow->type)){                                                    
+                                                        $selected = $formField->getCodename() == $dataRow->type;
+                                                    }else{
+
+                                                        switch($data['type']){
+                                                            case 'integer':
+                                                            case 'decimal':
+                                                                $selected = ($formField->getCodename() == 'number');
+                                                                break;                                            
+                                                            case 'tinyint':
+                                                                $selected = ($formField->getCodename() == 'checkbox');
+                                                                break;                                            
+                                                            case 'varchar':
+                                                                $selected = ($formField->getCodename() == 'text');
+                                                                break;                                            
+                                                            case 'text':
+                                                            case 'mediumtext':
+                                                                $selected = ($formField->getCodename() == 'text_area');
+                                                                break;                                            
+                                                            case 'date':
+                                                                $selected = ($formField->getCodename() == 'date');
+                                                                break;                                            
+                                                            case 'datetime':
+                                                                $selected = ($formField->getCodename() == 'timestamp');
+                                                                break;                                            
+                                                            default:
+                                                                $selected = ($formField->getCodename() == 'text');
+                                                                break;                                            
+                                                        }
+                                                    }
+
                                                     @endphp
+
                                                     <option value="{{ $formField->getCodename() }}" {{ $selected ? 'selected' : '' }}>
                                                         {{ $formField->getName() }}
                                                     </option>

@@ -6,7 +6,7 @@ class DeleteAction extends AbstractAction
 {
     public function getTitle()
     {
-        return __('voyager::generic.delete');
+        #return __('voyager::generic.delete');
     }
 
     public function getIcon()
@@ -22,7 +22,7 @@ class DeleteAction extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class'   => 'btn btn-sm btn-danger pull-right delete',
+            'class'   => 'btn btn-default btn-danger delete',
             'data-id' => $this->data->{$this->data->getKeyName()},
             'id'      => 'delete-'.$this->data->{$this->data->getKeyName()},
         ];

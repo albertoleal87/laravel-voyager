@@ -6,12 +6,12 @@ class RestoreAction extends AbstractAction
 {
     public function getTitle()
     {
-        return __('voyager::generic.restore');
+        #return __('voyager::generic.restore');
     }
 
     public function getIcon()
     {
-        return 'voyager-trash';
+        return 'voyager-refresh';
     }
 
     public function getPolicy()
@@ -22,7 +22,7 @@ class RestoreAction extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class'   => 'btn btn-sm btn-success pull-right restore',
+            'class'   => 'btn btn-default btn-success restore',
             'data-id' => $this->data->{$this->data->getKeyName()},
             'id'      => 'restore-'.$this->data->{$this->data->getKeyName()},
         ];

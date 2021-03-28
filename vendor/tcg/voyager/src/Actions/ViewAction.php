@@ -6,12 +6,12 @@ class ViewAction extends AbstractAction
 {
     public function getTitle()
     {
-        return __('voyager::generic.view');
+        #return __('voyager::generic.view');
     }
 
     public function getIcon()
     {
-        return 'voyager-eye';
+        return 'voyager-search';
     }
 
     public function getPolicy()
@@ -22,7 +22,7 @@ class ViewAction extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-warning pull-right view',
+            'class' => 'btn btn-default view view_info',
         ];
     }
 

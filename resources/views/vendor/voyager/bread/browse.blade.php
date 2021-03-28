@@ -3,10 +3,7 @@
 @section('page_title', __('voyager::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
 
 @section('page_header')
-    <div class="container-fluid">
-        <h1 class="page-title">
-            <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
-        </h1>
+    <div class="container-fluid pull-right">
         @can('add', app($dataType->model_name))
             <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
                 <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
@@ -41,7 +38,20 @@
         @include('voyager::alerts')
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-bordered">
+                <div class="panel panel-bordered panel-primary">
+
+                    <div class="panel-heading">
+
+                        <h1 class="page-title">
+                            <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
+                        </h1>
+
+                        <div class="panel-actions">
+                            <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                            <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
+                        </div>
+                    </div>
+
                     <div class="panel-body">
                         @if ($isServerSide)
                             <form method="get" class="form-search">
@@ -75,7 +85,7 @@
                             </form>
                         @endif
                         <div class="table-responsive">
-                            <table id="dataTable" class="table table-hover">
+                            <table id="dataTable" class="table table-hover table-striped nowrap">
                                 <thead>
                                     <tr>
                                         @if($showCheckboxColumn)
@@ -250,7 +260,7 @@
                                                 @endif
                                             </td>
                                         @endforeach
-                                        <td class="no-sort no-click bread-actions">
+                                        <td class="no-sort no-click bread-actions pull-right" style="white-space: nowrap;">
                                             @foreach($actions as $action)
                                                 @if (!method_exists($action, 'massAction'))
                                                     @include('voyager::bread.partials.actions', ['action' => $action])
@@ -307,6 +317,27 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <div class="modal modal-info fade" tabindex="-1" id="modal_info" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager::generic.close') }}"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">
+                        <i class="{{ $dataType->icon }}"></i> {{ __('voyager::generic.viewing') }} {{ ucfirst($dataType->getTranslatedAttribute('display_name_singular')) }}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-right" data-dismiss="modal">{{ __('voyager::generic.close') }}</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 @stop
 
 @section('css')
@@ -389,5 +420,16 @@
             });
             $('.selected_ids').val(ids);
         });
+
+
+        $('#dataTable').on('click', '.view_info', function (e) {
+            e.preventDefault();
+            href = $(this).attr('href');
+            $.get(href, function (data) {
+                $('#modal_info .modal-body').html(data);
+                $('#modal_info').modal('show');
+            });
+        });
+
     </script>
 @stop

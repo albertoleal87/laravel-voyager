@@ -12,19 +12,30 @@
 @section('page_title', __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular'))
 
 @section('page_header')
-    <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i>
-        {{ __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular') }}
-    </h1>
     @include('voyager::multilingual.language-selector')
 @stop
 
 @section('content')
     <div class="page-content edit-add container-fluid">
+        @include('voyager::alerts')
         <div class="row">
             <div class="col-md-12">
 
-                <div class="panel panel-bordered">
+                <div class="panel panel-bordered panel-primary">
+
+                    <div class="panel-heading">
+
+                        <h1 class="page-title">
+                            <i class="{{ $dataType->icon }}"></i>
+                            {{ __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular') }}
+                        </h1>
+
+                        <div class="panel-actions">
+                            <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                            <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
+                        </div>
+                    </div>
+
                     <!-- form start -->
                     <form role="form"
                             class="form-edit-add"

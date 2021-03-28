@@ -45,10 +45,10 @@ class Voyager
     protected $viewLoadingEvents = [];
 
     protected $actions = [
+        ViewAction::class,
+        EditAction::class,
         DeleteAction::class,
         RestoreAction::class,
-        EditAction::class,
-        ViewAction::class,
     ];
 
     protected $models = [

@@ -6,7 +6,7 @@ class EditAction extends AbstractAction
 {
     public function getTitle()
     {
-        return __('voyager::generic.edit');
+        #return __('voyager::generic.edit');
     }
 
     public function getIcon()
@@ -22,7 +22,7 @@ class EditAction extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-primary pull-right edit',
+            'class' => 'btn btn-info edit',
         ];
     }
 

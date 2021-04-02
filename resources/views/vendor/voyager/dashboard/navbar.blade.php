@@ -60,13 +60,13 @@
                                 {{__($name)}}
                             </button>
                         </form>
-                        @else
-                        <a href="{{ isset($item['route']) && Route::has($item['route']) ? route($item['route']) : (isset($item['route']) ? $item['route'] : '#') }}" {!! isset($item['target_blank']) && $item['target_blank'] ? 'target="_blank"' : '' !!}>
-                            @if(isset($item['icon_class']) && !empty($item['icon_class']))
-                            <i class="{!! $item['icon_class'] !!}"></i>
-                            @endif
-                            {{__($name)}}
-                        </a>
+                        @elseif(Auth::user()->hasPermission($item['permission']) || $item['permission'] == '')
+                            <a href="{{ isset($item['route']) && Route::has($item['route']) ? route($item['route']) : (isset($item['route']) ? $item['route'] : '#') }}" {!! isset($item['target_blank']) && $item['target_blank'] ? 'target="_blank"' : '' !!}>
+                                @if(isset($item['icon_class']) && !empty($item['icon_class']))
+                                <i class="{!! $item['icon_class'] !!}"></i>
+                                @endif
+                                {{__($name)}}
+                            </a>                        
                         @endif
                     </li>
                     @endforeach

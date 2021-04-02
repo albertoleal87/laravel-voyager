@@ -31,3 +31,17 @@
 	max-height: calc(100vh - 200px);
 	overflow-y: auto;
 }
+
+.navbar .dropdown .dropdown-menu {
+    display: none;
+    visibility: hidden;
+}
+
+.voyager .navbar .navbar-nav>li:hover>a,
+.voyager .navbar .navbar-nav>li.open>a {
+    color: #353d47 !important;
+}
+
+.nowrap{
+    white-space: nowrap;
+}

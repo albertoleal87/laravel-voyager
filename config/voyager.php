@@ -132,15 +132,61 @@ return [
                 'route'      => 'voyager.profile',
                 'classes'    => 'class-full-of-rum',
                 'icon_class' => 'voyager-person',
+                'permission' => '',
             ],
-            'voyager::generic.home' => [
-                'route'        => '/',
-                'icon_class'   => 'voyager-home',
-                'target_blank' => true,
+
+            'voyager::generic.permissions' => [
+                'route'      => 'voyager.roles.index',
+                'classes'    => 'class-full-of-rum',
+                'icon_class' => 'voyager-lock',
+                'permission' => 'browse_roles',
             ],
+
+            'voyager::generic.settings' => [
+                'route'      => 'voyager.settings.index',
+                'classes'    => 'class-full-of-rum',
+                'icon_class' => 'voyager-settings',
+                'permission' => 'browse_settings',
+            ],
+
+            'voyager::generic.database' => [
+                'route'      => 'voyager.database.index',
+                'classes'    => 'class-full-of-rum',
+                'icon_class' => 'voyager-data',
+                'permission' => 'browse_database',
+            ],
+
+            /*
+            'voyager::generic.bread' => [
+                'route'      => 'voyager.bread.index',
+                'classes'    => 'class-full-of-rum',
+                'icon_class' => 'voyager-bread',
+                'permission' => 'browse_bread',
+            ],
+            */
+            
+            /*
+            'voyager::generic.menu_builder' => [
+                'route'      => 'voyager.menus.index',
+                'classes'    => 'class-full-of-rum',
+                'icon_class' => 'voyager-list',
+                'permission' => 'browse_menus',
+            ],
+            */
+
+            /*
+            'voyager::generic.compass' => [
+                'route'      => 'voyager.compass.index',
+                'classes'    => 'class-full-of-rum',
+                'icon_class' => 'voyager-compass',
+                'permission' => 'browse_compass',
+            ],
+            */
+            
             'voyager::generic.logout' => [
                 'route'      => 'voyager.logout',
                 'icon_class' => 'voyager-power',
+                'permission' => '',
             ],
         ],
 
